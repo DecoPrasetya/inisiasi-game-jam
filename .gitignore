@@ -1,0 +1,58 @@
+# ==========================================
+# Godot Engine Files (Godot 4.x / 3.x)
+# ==========================================
+
+# Folder cache import biner Godot (wajib di-ignore agar repo tidak bengkak)
+.godot/
+forest-defense/.godot/
+**/.godot/
+
+# Folder cache import lama (Godot 3.x)
+.import/
+forest-defense/.import/
+**/.import/
+
+# File export/build binary game
+export/
+build/
+bin/
+forest-defense/export/
+forest-defense/build/
+forest-defense/bin/
+*.pck
+*.apk
+*.aab
+*.exe
+*.zip
+
+# Metadata editor & file sementara
+*.tmp
+*.orig
+forest-defense/.editor/
+**/.editor/
+
+# File Mono/C# (jika menggunakan C#)
+.mono/
+forest-defense/.mono/
+**/.mono/
+*.csproj
+*.sln
+
+# ==========================================
+# OS & Editor Metadata
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# ==========================================
+# Docs & Temporary Files
+# ==========================================
+docs/**/*.tmp
+docs/**/~*
