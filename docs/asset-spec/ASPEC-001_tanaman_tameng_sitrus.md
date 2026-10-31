@@ -12,8 +12,8 @@
 - **Nama Karakter**: Tameng Sitrus (Citrus Shield)
 - **Role & Rarity**: `DEFENDER` / `COMMON` (Umum)
 - **Deskripsi Visual 🟢**: Buah jeruk bulat oranye cerah dengan ekspresi tegas dan berani. Tangan kanannya memegang erat potongan tebal irisan buah jeruk sebagai tameng kokoh berpola serat bulir sitrus berair. Mengenakan mahkota daun hijau kecil di kepalanya.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 40 \times 44$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 58)$ piksel (Tepat di alas pijakan tanah).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 800 \times 880$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1160)$ piksel (Tepat di alas pijakan tanah).
 
 ---
 
@@ -60,9 +60,9 @@ Setiap klip animasi dirancang seringkas mungkin (3–5 frame) agar animasi padat
 
 ## 3. Checklist File Aset Siap Pakai
 
-- [ ] `tameng_sitrus_idle.png` (Spritesheet $256 \times 64$ px, 4 frames horizontal)
-- [ ] `tameng_sitrus_bash.png` (Spritesheet $256 \times 64$ px, 4 frames horizontal)
-- [ ] `tameng_sitrus_hit.png` (Spritesheet $192 \times 64$ px, 3 frames horizontal)
-- [ ] `tameng_sitrus_die.png` (Spritesheet $256 \times 64$ px, 4 frames horizontal)
-- [ ] `tameng_sitrus_icon.png` (Ikon tunggal $32 \times 32$ px untuk kartu belanja)
+- [ ] `tameng_sitrus_idle.png` (Spritesheet $5120 \times 1280$ px, 4 frames horizontal @ 1280x1280)
+- [ ] `tameng_sitrus_bash.png` (Spritesheet $5120 \times 1280$ px, 4 frames horizontal @ 1280x1280)
+- [ ] `tameng_sitrus_hit.png` (Spritesheet $3840 \times 1280$ px, 3 frames horizontal @ 1280x1280)
+- [ ] `tameng_sitrus_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames horizontal @ 1280x1280)
+- [ ] `tameng_sitrus_icon.png` (Ikon tunggal $1280 \times 1280$ px untuk kartu belanja)
 - [ ] Resource `tameng_sitrus_frames.tres` di Godot Engine dengan 4 klip animasi di atas.

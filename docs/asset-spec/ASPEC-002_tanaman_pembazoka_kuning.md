@@ -12,8 +12,8 @@
 - **Nama Karakter**: Pembazoka Kuning (Yellow Bazooka)
 - **Role & Rarity**: `DAMAGE_DEALER` / `EPIC` (Luar Biasa)
 - **Deskripsi Visual 🟢**: Buah pisang berkulit kuning cerah yang mengenakan helm tempur militer hijau daun. Berdiri gagah dengan memanggul senjata bazoka artileri berat di bahu kanannya. Moncong bazoka berdiameter besar dirancang khusus untuk memuntahkan roket amunisi pisang berdaya ledak masif.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 46 \times 50$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 58)$ piksel (Alas bawah kaki).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 920 \times 1000$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1160)$ piksel (Alas bawah kaki).
 
 ---
 
@@ -59,12 +59,12 @@
 ## 3. Sub-Aset Proyektil & Efek Ledakan (VFX Terkait)
 
 1. **Sprite Proyektil (`banana_rocket.png`)**:
-   - Dimensi: $24 \times 12$ piksel.
+   - Dimensi: Kanvas $1280 \times 1280$ piksel.
    - Roket pisang berujung runcing dengan sirip pendorong dan nyala api kecil di bagian ekor.
 2. **Animasi Ledakan AOE (`rocket_explosion.png`)**:
-   - 4 Frame ($64 \times 64$ px):
+   - 4 Frame ($1280 \times 1280$ px):
      - *Frame 1*: Kilatan putih terang di titik benturan tanah.
-     - *Frame 2*: Ledakan bola api kuning-oranye mengembang hingga radius 45px.
+     - *Frame 2*: Ledakan bola api kuning-oranye mengembang hingga radius ledakan luas.
      - *Frame 3*: Percikan serpihan buah pisang dan gumpalan asap tebal mengepul.
      - *Frame 4*: Asap menipis menyisakan bekas hangus di tanah yang memudar.
 
@@ -72,10 +72,10 @@
 
 ## 4. Checklist File Aset Siap Pakai
 
-- [ ] `pembazoka_kuning_idle.png` (Spritesheet $192 \times 64$ px, 3 frames)
-- [ ] `pembazoka_kuning_shoot.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `pembazoka_kuning_reload.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `pembazoka_kuning_die.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `banana_rocket.png` (Sprite tunggal proyektil $24 \times 12$ px)
-- [ ] `banana_rocket_explosion.png` (Spritesheet ledakan $256 \times 64$ px, 4 frames)
-- [ ] `pembazoka_kuning_icon.png` (Ikon tunggal $32 \times 32$ px untuk shop card)
+- [ ] `pembazoka_kuning_idle.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `pembazoka_kuning_shoot.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `pembazoka_kuning_reload.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `pembazoka_kuning_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `banana_rocket.png` (Sprite tunggal proyektil $1280 \times 1280$ px)
+- [ ] `banana_rocket_explosion.png` (Spritesheet ledakan $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `pembazoka_kuning_icon.png` (Ikon tunggal $1280 \times 1280$ px untuk shop card)

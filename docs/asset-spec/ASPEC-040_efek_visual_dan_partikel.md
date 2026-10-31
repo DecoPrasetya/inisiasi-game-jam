@@ -21,7 +21,7 @@ Efek visual (VFX) memegang peran vital agar pemain dapat membedakan ketiga peran
 
 ### 2.1 Drop Orb Sumber Daya (`vfx_resource_orb.png`)
 *Kondisi: Muncul di titik mati monster, melayang memantul sejenak lalu melesat otomatis ke indikator saldo HUD.*
-- **Dimensi**: $24 \times 24$ piksel.
+- **Dimensi**: Kanvas $1280 \times 1280$ piksel.
 - **Jumlah Frame**: 4 Frame (Loop, 8 FPS).
 - **Rincian Frame**:
   - **Frame 1**: Kristal tetesan air bening berpendar biru-cyan cerah dengan kilatan putih di intinya.
@@ -31,7 +31,7 @@ Efek visual (VFX) memegang peran vital agar pemain dapat membedakan ketiga peran
 
 ### 2.2 Hentakan Sari Jeruk Tameng Sitrus (`vfx_citrus_bash.png`)
 *Kondisi: Memancarkan efek Crowd Control Slow 35% dan Knockback saat Tameng Sitrus memukul tanah.*
-- **Dimensi**: $80 \times 80$ piksel (Meliputi area kontak 40px).
+- **Dimensi**: Kanvas $1280 \times 1280$ piksel.
 - **Jumlah Frame**: 3 Frame (One-Shot, 10 FPS).
 - **Rincian Frame**:
   - **Frame 1**: Gelombang cincin oranye tebal meletup tajam di permukaan tanah.
@@ -39,18 +39,18 @@ Efek visual (VFX) memegang peran vital agar pemain dapat membedakan ketiga peran
   - **Frame 3**: Tetesan sari jeruk menyebar tipis di udara dan memudar lembut (fade-out).
 
 ### 2.3 Ledakan Area Roket Bazoka Kuning (`vfx_rocket_explosion.png`)
-*Kondisi: Muncul saat roket balistik pisang menabrak koordinat tanah sasaran (AOE 45px).*
-- **Dimensi**: $64 \times 64$ piksel.
+*Kondisi: Muncul saat roket balistik pisang menabrak koordinat tanah sasaran (AOE luas).*
+- **Dimensi**: Kanvas $1280 \times 1280$ piksel.
 - **Jumlah Frame**: 4 Frame (One-Shot, 10 FPS).
 - **Rincian Frame**:
-  - **Frame 1 (Detonasi)**: Titik kilat putih terang berdiameter 16px di pusat ledakan.
-  - **Frame 2 (Fireball)**: Bola api kuning-oranye mengembang liar hingga radius 45px dengan percikan serpihan pisang.
+  - **Frame 1 (Detonasi)**: Titik kilat putih terang di pusat ledakan.
+  - **Frame 2 (Fireball)**: Bola api kuning-oranye mengembang liar dengan percikan serpihan pisang.
   - **Frame 3 (Smoke Cloud)**: Api meredup berganti gumpalan asap hitam pekat mengepul ke atas.
   - **Frame 4 (Dissipation)**: Asap menipis menjadi jelaga hitam yang melayang hilang tertiup angin.
 
 ### 2.4 Aura Pemulihan Medkit Anggrek (`vfx_heal_burst.png`)
 *Kondisi: Muncul di atas tubuh tanaman/Rumah saat medkit mendarat sukses.*
-- **Dimensi**: $48 \times 48$ piksel.
+- **Dimensi**: Kanvas $1280 \times 1280$ piksel.
 - **Jumlah Frame**: 4 Frame (One-Shot, 8 FPS).
 - **Rincian Frame**:
   - **Frame 1**: Cincin pendaran hijau muda meletup dari alas tanah tanaman.
@@ -62,7 +62,7 @@ Efek visual (VFX) memegang peran vital agar pemain dapat membedakan ketiga peran
 
 ## 3. Indikator Ikon Status di Atas Kepala (Status Effect Overlays)
 
-Dimensi kanvas: $24 \times 24$ piksel, melayang di atas kepala entitas yang terkena efek status:
+Dimensi kanvas: $1280 \times 1280$ piksel, melayang di atas kepala entitas yang terkena efek status:
 
 | Nama Efek Status | Tipe Efek 🟢 | Frame | Deskripsi Visual |
 | :--- | :---: | :---: | :--- |
@@ -76,11 +76,11 @@ Dimensi kanvas: $24 \times 24$ piksel, melayang di atas kepala entitas yang terk
 
 ## 4. Checklist File Aset Siap Pakai
 
-- [ ] `vfx_resource_orb.png` (Spritesheet $96 \times 24$ px, 4 frames)
-- [ ] `vfx_citrus_bash.png` (Spritesheet $240 \times 80$ px, 3 frames)
-- [ ] `vfx_rocket_explosion.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `vfx_heal_burst.png` (Spritesheet $192 \times 48$ px, 4 frames)
-- [ ] `status_stun.png` (Spritesheet $72 \times 24$ px, 3 frames)
-- [ ] `status_slow.png` (Spritesheet $72 \times 24$ px, 3 frames)
-- [ ] `status_buff_arrows.png` (Spritesheet $72 \times 24$ px, 3 frames)
-- [ ] `status_debuff_arrows.png` (Spritesheet $72 \times 24$ px, 3 frames)
+- [ ] `vfx_resource_orb.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `vfx_citrus_bash.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `vfx_rocket_explosion.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `vfx_heal_burst.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `status_stun.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `status_slow.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `status_buff_arrows.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `status_debuff_arrows.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)

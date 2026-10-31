@@ -12,8 +12,8 @@
 - **Nama Karakter**: Dukun Lumut (Mossback Shaman)
 - **Tipe Serangan 🟢**: `NON_ATTACKING` (Tidak Menyerang Tanaman Maupun Rumah)
 - **Deskripsi Visual**: Sosok makhluk hutan purba bertubuh bungkuk yang mengenakan jubah tenunan daun kering berlapis lumut tebal. Wajahnya tersembunyi di balik tudung gelap dengan sepasang mata hijau pudar mistis. Tangan kanannya memegang tongkat kayu meliuk berujung batu kristal zamrud yang memancarkan aura pemulihan (+4 HP/detik) bagi monster kawan di sekitarnya.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 42 \times 48$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 56)$ piksel (Alas bawah jubah dan tongkat).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 840 \times 960$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1120)$ piksel (Alas bawah jubah dan tongkat).
 
 ---
 
@@ -58,8 +58,8 @@
 
 ## 3. Checklist File Aset Siap Pakai
 
-- [ ] `dukun_lumut_walk.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `dukun_lumut_chant.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `dukun_lumut_hurt.png` (Spritesheet $192 \times 64$ px, 3 frames)
-- [ ] `dukun_lumut_die.png` (Spritesheet $256 \times 64$ px, 4 frames)
+- [ ] `dukun_lumut_walk.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `dukun_lumut_chant.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `dukun_lumut_hurt.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `dukun_lumut_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
 - [ ] Resource `dukun_lumut_frames.tres` di Godot Engine dengan 4 klip animasi di atas.

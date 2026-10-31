@@ -12,8 +12,8 @@
 - **Nama Karakter**: Anggrek Paramedis (Paramedic Orchid)
 - **Role & Rarity**: `SUPPORTER` / `RARE` (Langka)
 - **Deskripsi Visual 🟢**: Bunga anggrek hutan yang anggun dan berwibawa dengan kelopak gradasi ungu-magenta dan putih bersih. Mengenakan selempang paramedis hijau di batangnya. Tangan kanannya membawa tas jinjing kotak pertolongan pertama (medkit) mini putih berhiaskan simbol palang hijau bersinar lembut.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 38 \times 46$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 58)$ piksel (Alas batang di tanah).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 760 \times 920$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1160)$ piksel (Alas batang di tanah).
 
 ---
 
@@ -59,10 +59,10 @@
 ## 3. Sub-Aset Proyektil & Efek Sembuh (VFX Terkait)
 
 1. **Sprite Proyektil Medkit (`medkit_projectile.png`)**:
-   - 4 Frame Berputar ($16 \times 16$ px):
+   - 4 Frame Berputar ($1280 \times 1280$ px):
      - Kotak P3K putih bersilang hijau yang berputar vertikal di udara saat melayang ke target.
 2. **Animasi Ledakan Sembuh (`heal_impact.png`)**:
-   - 4 Frame ($48 \times 48$ px):
+   - 4 Frame ($1280 \times 1280$ px):
      - *Frame 1*: Medkit terbuka menyentuh tanah, gelombang hijau melingkar memancar.
      - *Frame 2*: Simbol palang hijau besar bersinar di atas tubuh tanaman target (+24 HP).
      - *Frame 3*: Percikan partikel daun sembuh berkilau naik ke atas tubuh target.
@@ -72,10 +72,10 @@
 
 ## 4. Checklist File Aset Siap Pakai
 
-- [ ] `anggrek_paramedis_idle.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `anggrek_paramedis_throw.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `anggrek_paramedis_celebrate.png` (Spritesheet $192 \times 64$ px, 3 frames)
-- [ ] `anggrek_paramedis_die.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `medkit_projectile.png` (Spritesheet rotasi $64 \times 16$ px, 4 frames)
-- [ ] `heal_impact.png` (Spritesheet ledakan heal $192 \times 48$ px, 4 frames)
-- [ ] `anggrek_paramedis_icon.png` (Ikon tunggal $32 \times 32$ px untuk shop card)
+- [ ] `anggrek_paramedis_idle.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `anggrek_paramedis_throw.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `anggrek_paramedis_celebrate.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `anggrek_paramedis_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `medkit_projectile.png` (Spritesheet rotasi $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `heal_impact.png` (Spritesheet ledakan heal $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `anggrek_paramedis_icon.png` (Ikon tunggal $1280 \times 1280$ px untuk shop card)
