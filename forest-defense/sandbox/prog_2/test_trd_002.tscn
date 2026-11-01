@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cske7n8nguytg"]
+
+[ext_resource type="Script" uid="uid://dvubjghowycsw" path="res://sandbox/prog_2/test_trd_002.gd" id="1_35eia"]
+[ext_resource type="PackedScene" uid="uid://imv8dqinfoyq" path="res://sandbox/prog_2/test_char.tscn" id="2_0r84l"]
+[ext_resource type="PackedScene" uid="uid://d354tkeg8wxcq" path="res://src/system/grid_placement/planting_grid.tscn" id="2_ajby1"]
+[ext_resource type="Script" uid="uid://bc1m7td7l6a3p" path="res://src/resources/schemas/plant_stats.gd" id="2_ncgo1"]
+
+[sub_resource type="Resource" id="Resource_0ki2t"]
+script = ExtResource("2_ncgo1")
+scene = ExtResource("2_0r84l")
+rarity = 3
+cost = 12
+metadata/_custom_type_script = "uid://bc1m7td7l6a3p"
+
+[node name="TestTrd002" type="Node2D" unique_id=662513385]
+script = ExtResource("1_35eia")
+test_plant_stats = SubResource("Resource_0ki2t")
+
+[node name="PlantingGrid" parent="." unique_id=1818057291 instance=ExtResource("2_ajby1")]
+position = Vector2(344, 442)
