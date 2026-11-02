@@ -17,6 +17,7 @@ func _ready() -> void:
 	EventBus.enemy_killed.connect(_on_enemy_killed)
 	EventBus.house_destroyed.connect(_on_house_destroyed)
 	_connect_house_signals()
+	EventBus.wave_spawn_started.connect(_on_wave_spawn_started)
 
 func _process(delta: float) -> void:
 	if current_phase == Constants.GamePhase.DAY:
@@ -57,15 +58,21 @@ func _set_phase(new_phase: Constants.GamePhase) -> void:
 	current_phase = new_phase
 	EventBus.game_phase_changed.emit(old_phase, new_phase)
 
+func _on_wave_spawn_started(_day_number: int, total_enemies: int) -> void:
+	# Mengunci total seluruh musuh di gelombang malam ini sejak awal malam
+	active_enemy_count = total_enemies
+	EventBus.enemy_count_changed.emit(active_enemy_count)
+
 func _on_enemy_spawned(_enemy_node: Node2D, _side: Constants.SpawnSide) -> void:
-	active_enemy_count += 1
+	if active_enemy_count <= 0:
+		active_enemy_count = 1
 	EventBus.enemy_count_changed.emit(active_enemy_count)
 
 func _on_enemy_killed(_reward: int, _id: StringName, _pos: Vector2) -> void:
 	active_enemy_count = max(0, active_enemy_count - 1)
 	EventBus.enemy_count_changed.emit(active_enemy_count)
 	
-	# Syarat selesai malam: semua musuh gelombang telah dimusnahkan 📘 [PRD: 4.2]
+	# Malam HANYA berakhir jika semua musuh dari total gelombang telah mati
 	if current_phase == Constants.GamePhase.NIGHT and active_enemy_count == 0:
 		end_night()
 
