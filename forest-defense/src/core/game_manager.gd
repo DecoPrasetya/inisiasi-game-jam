@@ -1,7 +1,11 @@
 extends Node
 
 @export var day_duration: float = Constants.DAY_DURATION_SECONDS
+@export var starting_resource: int = 100
+@export var initial_house_space: int = 5
 
+var current_resource: int = 100
+var current_house_space: int = 5
 var current_phase: Constants.GamePhase = Constants.GamePhase.MENU
 var current_day: int = 1
 var day_timer: float = 0.0
@@ -12,6 +16,7 @@ func _ready() -> void:
 	EventBus.enemy_spawned.connect(_on_enemy_spawned)
 	EventBus.enemy_killed.connect(_on_enemy_killed)
 	EventBus.house_destroyed.connect(_on_house_destroyed)
+	_connect_house_signals()
 
 func _process(delta: float) -> void:
 	if current_phase == Constants.GamePhase.DAY:
@@ -26,6 +31,9 @@ func start_new_game() -> void:
 	_set_phase(Constants.GamePhase.DAY)
 	day_timer = day_duration
 	EventBus.day_started.emit(current_day)
+	current_resource = starting_resource
+	current_house_space = initial_house_space	 
+	EventBus.resource_changed.emit(current_resource, 0)
 
 func fast_forward_day() -> void:
 	if current_phase == Constants.GamePhase.DAY:
@@ -64,3 +72,29 @@ func _on_enemy_killed(_reward: int, _id: StringName, _pos: Vector2) -> void:
 func _on_house_destroyed() -> void:
 	_set_phase(Constants.GamePhase.GAME_OVER)
 	EventBus.game_over.emit(days_survived)
+
+func get_current_house_space() -> int:
+	return current_house_space
+
+func has_enough_resource(cost: int) -> bool:
+	return current_resource >= cost
+
+func add_resource(amount: int) -> void:
+	if amount <= 0:
+		return
+	current_resource += amount
+	EventBus.resource_changed.emit(current_resource, amount)
+
+func spend_resource(cost: int) -> bool:
+	if not has_enough_resource(cost):
+		return false
+	current_resource -= cost
+	EventBus.resource_changed.emit(current_resource, -cost)
+	return true
+
+func _on_house_upgraded(_new_level: int, new_plant_space: int, _max_plant_level: int) -> void:
+	current_house_space = new_plant_space
+
+func _connect_house_signals() -> void:
+	if not EventBus.house_upgraded.is_connected(_on_house_upgraded):
+		EventBus.house_upgraded.connect(_on_house_upgraded)

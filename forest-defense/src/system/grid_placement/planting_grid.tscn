@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d354tkeg8wxcq"]
+
+[ext_resource type="Script" uid="uid://ct7cv6e4e16w2" path="res://src/system/grid_placement/planting_grid_manager.gd" id="1_1ireg"]
+
+[sub_resource type="TileSet" id="TileSet_xrivr"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(64, 32)
+
+[node name="PlantingGrid" type="Node2D" unique_id=1818057291]
+script = ExtResource("1_1ireg")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=885497513]
+tile_set = SubResource("TileSet_xrivr")
+
+[node name="PlantContainer" type="Node2D" parent="." unique_id=868146104]
+y_sort_enabled = true
+
+[node name="SelectionHighlight" type="Polygon2D" parent="." unique_id=1617426795]
+polygon = PackedVector2Array(0, -16, 32, 0, 0, 16, -32, 0)
+
+[node name="GhostPreview" type="Sprite2D" parent="." unique_id=1011953137]
+
+[node name="RangeIndicator" type="Line2D" parent="GhostPreview" unique_id=1410104077]
+closed = true
+width = 2.0
+default_color = Color(0, 1, 0, 1)
