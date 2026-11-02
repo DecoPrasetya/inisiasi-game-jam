@@ -1,6 +1,7 @@
 class_name GridPlacementManager
 extends Node2D
 
+#Ukuran tile
 const TILE_HALF_WIDTH: float = 32.0
 const TILE_HALF_HEIGHT: float = 16.0
 @export_group("Ukuran Grid Belah Ketupat")
@@ -166,22 +167,20 @@ func is_cell_occupied(cell: Vector2i) -> bool:
 
 
 func is_cell_valid_for_planting(cell: Vector2i) -> bool:
-	# Cek batas diamond 11x11 (|x| + |y| <= 5)
+	# Cek apakah di dalam batas belah ketupat hijau
 	if not is_within_diamond_bounds(cell):
 		return false
 		
-	# Cek area terlarang Rumah 3x3 di pusat ([-1..1, -1..1])
+	# Cek apakah berada di area terlarang Rumah 3x3 (merah)
 	if is_house_footprint(cell):
 		return false
 		
-	# Cek apakah plot sudah terisi tanaman lain
+	# Cek apakah petak sudah terisi tanaman lain yang masih hidup
 	if is_cell_occupied(cell):
 		return false
 		
-	# Aturan - Jumlah tanaman <= Space Tanaman Rumah
-	var current_plant_count: int = occupied_plots.size()
-	var house_space_limit: int = GameManager.get_current_house_space()
-	if current_plant_count >= house_space_limit:
+	# Cek apakah jumlah tanaman aktif sudah mencapai batas Space Rumah
+	if occupied_plots.size() >= GameManager.get_current_house_space():
 		return false
 		
 	return true
@@ -224,22 +223,38 @@ func _attempt_place_at_hovered_cell() -> void:
 	_instantiate_plant(active_selected_plant_data, current_hovered_cell)
 	cancel_placement()
 
-
+# salinan tumbuhan yang ditanam
 func _instantiate_plant(data: PlantStats, cell: Vector2i) -> void:
-	if data == null or data.scene == null:
-		push_error("GridPlacementManager: PlantStats atau PackedScene kosong!")
+	if data == null:
+		push_error("GridPlacementManager: PlantStats kosong!")
 		return
 		
-	var plant_inst: Node2D = data.scene.instantiate() as Node2D
-	plant_inst.position = grid_to_world(cell)
-	plant_container.add_child(plant_inst)
-	occupied_plots[cell] = plant_inst
+	var plant_instance: Node2D
+	if data.scene != null:
+		plant_instance = data.scene.instantiate() as Node2D
+		# Hanya pasang PembazokaKuning jika scene masih memakai BasePlant murni dan role-nya DAMAGE_DEALER
+		if plant_instance.get_script() == BasePlant and data.role == Constants.PlantRole.DAMAGE_DEALER:
+			plant_instance.set_script(PembazokaKuning)
+	else:
+		plant_instance = PembazokaKuning.new()
+		
+	# Masukkan ke tree SETELAH script PembazokaKuning terpasang
+	plant_container.add_child(plant_instance)
+	plant_instance.position = grid_to_world(cell)
+	plant_instance.set_physics_process(true)
 	
-	if plant_inst.has_method("setup_from_stats"):
-		plant_inst.setup_from_stats(data, cell)
+	if plant_instance.has_method("setup_from_stats"):
+		plant_instance.setup_from_stats(data, cell)
+		
+	# memasukkan tanaman ke occupied_plots agar dihitung oleh Space Rumah
+	occupied_plots[cell] = plant_instance
 	
+	# sinyal kematian tanaman agar plot kembali kosong saat tanaman mati
+	if plant_instance.has_signal("plant_died"):
+		plant_instance.plant_died.connect(_on_plant_died.bind(cell), CONNECT_ONE_SHOT)
+		
 	var plant_id: StringName = data.id if "id" in data else StringName(data.resource_name)
-	EventBus.plant_placed.emit(plant_id, cell, plant_inst)
+	EventBus.plant_placed.emit(plant_id, cell, plant_instance)
 
 
 func _on_plant_died(cell: Vector2i) -> void:

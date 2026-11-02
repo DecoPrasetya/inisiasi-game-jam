@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bigkhsps7qwbp"]
+
+[ext_resource type="Script" uid="uid://7u1u06j86ycb" path="res://sandbox/prog_2/test_trd_005.gd" id="1_eth1c"]
+[ext_resource type="PackedScene" uid="uid://d354tkeg8wxcq" path="res://src/system/grid_placement/planting_grid.tscn" id="4_oeq4h"]
+[ext_resource type="PackedScene" uid="uid://xsbtwc6la4f7" path="res://src/system/wave_spawner/wave_spawner.tscn" id="5_wcbm7"]
+
+[node name="TestTrd005" type="Node2D" unique_id=1800105603]
+script = ExtResource("1_eth1c")
+
+[node name="PlantingGrid" parent="." unique_id=1818057291 instance=ExtResource("4_oeq4h")]
+position = Vector2(419, 302)
+
+[node name="WaveSpawner" parent="." unique_id=1218627763 instance=ExtResource("5_wcbm7")]
+position = Vector2(185, 350)
