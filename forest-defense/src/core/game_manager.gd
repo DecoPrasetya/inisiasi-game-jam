@@ -11,6 +11,8 @@ var current_day: int = 1
 var day_timer: float = 0.0
 var active_enemy_count: int = 0
 var days_survived: int = 0
+var max_house_hp: float = 500.0
+var current_house_hp: float = 500.0
 
 func _ready() -> void:
 	EventBus.enemy_spawned.connect(_on_enemy_spawned)
@@ -35,6 +37,7 @@ func start_new_game() -> void:
 	current_resource = starting_resource
 	current_house_space = initial_house_space	 
 	EventBus.resource_changed.emit(current_resource, 0)
+	current_house_hp = max_house_hp
 
 func fast_forward_day() -> void:
 	if current_phase == Constants.GamePhase.DAY:
@@ -105,3 +108,16 @@ func _on_house_upgraded(_new_level: int, new_plant_space: int, _max_plant_level:
 func _connect_house_signals() -> void:
 	if not EventBus.house_upgraded.is_connected(_on_house_upgraded):
 		EventBus.house_upgraded.connect(_on_house_upgraded)
+		
+func damage_house(amount: float) -> void:
+	if amount <= 0.0 or current_house_hp <= 0.0:
+		return
+		
+	current_house_hp = maxf(0.0, current_house_hp - amount)
+	
+	if EventBus.has_signal("house_health_changed"):
+		EventBus.emit_signal("house_health_changed", current_house_hp, max_house_hp)
+		
+	if current_house_hp <= 0.0:
+		if EventBus.has_signal("house_destroyed"):
+			EventBus.emit_signal("house_destroyed")

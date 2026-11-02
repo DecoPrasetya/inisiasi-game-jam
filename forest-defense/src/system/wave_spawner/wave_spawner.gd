@@ -72,7 +72,7 @@ func _create_new_enemy_instance() -> Node2D:
 	return inst
 
 
-func _acquire_enemy_from_pool(data: EnemyStats) -> Node2D:
+func _acquire_enemy_from_pool(_data: EnemyStats) -> Node2D:
 	var enemy_inst: Node2D = null
 	
 	if not _inactive_enemy_pool.is_empty():
@@ -226,7 +226,7 @@ func _instantiate_enemy(data: EnemyStats, side: Constants.SpawnSide, hp_mult: fl
 func _on_game_over(_days: int) -> void:
 	stop_spawning()
 
-
+#test sprite enemy
 func _create_default_enemy_stats() -> EnemyStats:
 	var fallback := EnemyStats.new()
 	fallback.id = &"katak_penyembur"
