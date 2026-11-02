@@ -19,6 +19,7 @@ Desain audio menggabungkan atmosfer hutan alami dengan nuansa taktis menantang:
 
 | Nama File | Durasi | Tempo | Karakter Musik & Instrumen |
 | :--- | :---: | :---: | :--- |
+| `bgm_main_menu.ogg` | 01:45 | 78 BPM | Petikan kecapi/harp magis berpadu melodi seruling bambu lembut dan kicauan jangkrik hutan di kejauhan; menghadirkan kesan dongeng mistis hutan. |
 | `bgm_day_peaceful.ogg` | 02:15 | 88 BPM | Gitar akustik nilon ceria, suling bambu lembut, petikan ukulele kayu, dan suara desau angin serta kicauan burung hutan. |
 | `bgm_night_defense.ogg` | 02:40 | 128 BPM | Tabuhan gendang tribal kayu bertempo kencang, denting gambang kayu cepat, desingan biola gesek bernada rendah tegang, dan lolongan angin malam. |
 | `bgm_game_over.ogg` | 00:20 | 65 BPM | Petikan dawai akustik sendu yang melambat diakhiri dengungan senja menandakan runtuhnya pondok hutan. |
