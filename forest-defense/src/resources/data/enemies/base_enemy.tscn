@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://dfdyl3jdjad56"]
 
+[sub_resource type="Gradient" id="Gradient_c1qnc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q01ci"]
+gradient = SubResource("Gradient_c1qnc")
+fill_from = Vector2(0.5017361, 0.16145833)
+fill_to = Vector2(0.5017361, 0.067708336)
+
 [node name="BaseEnemy" type="Node2D" unique_id=914840915]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=770180661]
+texture = SubResource("GradientTexture2D_q01ci")

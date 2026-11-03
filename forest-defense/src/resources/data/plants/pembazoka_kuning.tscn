@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://djr3vrbpaqa2f"]
 
+[ext_resource type="Script" uid="uid://d2ul3s0axlrwn" path="res://src/resources/data/plants/pembazoka_kuning.gd" id="1_gs3yw"]
+
 [node name="PembazokaKuning" type="Node2D" unique_id=1142097154]
+script = ExtResource("1_gs3yw")

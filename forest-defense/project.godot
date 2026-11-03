@@ -11,7 +11,14 @@ config_version=5
 [application]
 
 config/name="forest-defense"
+run/main_scene="uid://bigkhsps7qwbp"
 config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+Constants="*uid://dgbjawlnsou83"
+EventBus="*uid://ck4cj6byp1fk5"
+GameManager="*uid://dt0eipb4bt38i"
 
 [display]
 

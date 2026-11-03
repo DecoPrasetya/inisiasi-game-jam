@@ -11,9 +11,9 @@
 
 - **Nama Entitas**: Rumah Hutan (The Central House)
 - **Peran 🟢**: Objektif inti permainan yang berada di tengah lahan belah ketupat. Game Over terjadi jika HP Rumah mencapai 0.
-- **Dimensi Tapak Grid**: $3 \times 3$ sel isometrik ($192 \times 96$ piksel footprint tanah).
-- **Ukuran Kanvas Sprite**: $192 \times 192$ piksel (Tinggi vertikal menampung atap dan cerobong asap).
-- **Titik Tumpu (Pivot/Origin)**: $(96, 144)$ piksel (Titik pusat belah ketupat lantai dasar).
+- **Dimensi Tapak Grid**: $3 \times 3$ sel isometrik (Area footprint tanah beresolusi tinggi).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Tinggi vertikal menampung atap dan cerobong asap).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 960)$ piksel (Titik pusat belah ketupat lantai dasar).
 
 ---
 
@@ -70,10 +70,10 @@ Rumah berevolusi penampilannya seiring peningkatan level Rumah di game:
 
 ## 4. Checklist File Aset Siap Pakai
 
-- [ ] `house_tier1_idle.png` (Spritesheet $768 \times 192$ px, 4 frames horizontal)
-- [ ] `house_tier2_idle.png` (Spritesheet $768 \times 192$ px, 4 frames horizontal)
-- [ ] `house_tier3_idle.png` (Spritesheet $768 \times 192$ px, 4 frames horizontal)
-- [ ] `house_hit.png` (Spritesheet $576 \times 192$ px, 3 frames)
-- [ ] `house_upgrade.png` (Spritesheet $768 \times 192$ px, 4 frames)
-- [ ] `house_destroyed.png` (Spritesheet $768 \times 192$ px, 4 frames)
+- [ ] `house_tier1_idle.png` (Spritesheet $5120 \times 1280$ px, 4 frames horizontal @ 1280x1280)
+- [ ] `house_tier2_idle.png` (Spritesheet $5120 \times 1280$ px, 4 frames horizontal @ 1280x1280)
+- [ ] `house_tier3_idle.png` (Spritesheet $5120 \times 1280$ px, 4 frames horizontal @ 1280x1280)
+- [ ] `house_hit.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `house_upgrade.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `house_destroyed.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
 - [ ] Resource `house_frames.tres` di Godot Engine dengan seluruh animasi di atas.

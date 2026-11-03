@@ -18,7 +18,7 @@
 
 ## 2. Katalog Tile dalam TileSet (`tileset_forest.png`)
 
-File spritesheet gabungan atlas berukuran $256 \times 128$ piksel memuat:
+File spritesheet gabungan atlas berukuran $1280 \times 1280$ piksel memuat:
 
 | Indeks Tile | Nama Tile | Deskripsi Visual & Fungsi |
 | :---: | :--- | :--- |
@@ -39,11 +39,11 @@ Ditempatkan di luar batas diamond $11 \times 11$ untuk menciptakan ilusi hutan b
 
 | Nama Prop | Dimensi Kanvas | Titik Pivot (Origin) | Deskripsi Visual |
 | :--- | :---: | :---: | :--- |
-| **Pohon Pinus Rimbun** | $64 \times 96$ px | $(32, 88)$ px | Pohon pinus tinggi berdaun jarum rimbun bertingkat tiga, batang pohon kecokelatan tua. |
-| **Pohon Ek Kuno** | $96 \times 96$ px | $(48, 86)$ px | Pohon tua bertulang cabang besar berlumut dengan dedaunan kanopi lebat membayangi tanah. |
-| **Semak Belukar Beri** | $32 \times 32$ px | $(16, 28)$ px | Rumpun semak lebat berhiaskan buah beri liar merah menyala di tepi jalur jalan. |
-| **Batu Lumut Hutan** | $48 \times 32$ px | $(24, 26)$ px | Bongkahan batu kali abu-abu kebiruan yang separuh permukaannya tertutup lumut hijau tebal. |
-| **Tunggul Kayu Berjamur** | $32 \times 32$ px | $(16, 26)$ px | Sisa tebangan pohon purba yang ditumbuhi jamur-jamur kecil berpendar oranye. |
+| **Pohon Pinus Rimbun** | $1280 \times 1280$ px | $(640, 1170)$ px | Pohon pinus tinggi berdaun jarum rimbun bertingkat tiga, batang pohon kecokelatan tua. |
+| **Pohon Ek Kuno** | $1280 \times 1280$ px | $(640, 1150)$ px | Pohon tua bertulang cabang besar berlumut dengan dedaunan kanopi lebat membayangi tanah. |
+| **Semak Belukar Beri** | $1280 \times 1280$ px | $(640, 1120)$ px | Rumpun semak lebat berhiaskan buah beri liar merah menyala di tepi jalur jalan. |
+| **Batu Lumut Hutan** | $1280 \times 1280$ px | $(640, 1040)$ px | Bongkahan batu kali abu-abu kebiruan yang separuh permukaannya tertutup lumut hijau tebal. |
+| **Tunggul Kayu Berjamur** | $1280 \times 1280$ px | $(640, 1040)$ px | Sisa tebangan pohon purba yang ditumbuhi jamur-jamur kecil berpendar oranye. |
 
 ---
 
@@ -52,7 +52,7 @@ Ditempatkan di luar batas diamond $11 \times 11$ untuk menciptakan ilusi hutan b
 1. Buka resource `TileSet` di Godot Inspector.
 2. Atur **Tile Shape**: `Isometric`.
 3. Atur **Tile Layout**: `Diamond Down`.
-4. Atur **Tile Size**: `Vector2i(64, 32)`.
+4. Atur **Tile Size**: Menyesuaikan skala resolusi grafis game jam.
 5. Buat custom data layer:
    - `is_plantable` (Boolean): Bernilai `true` khusus pada tile *Plot Tanam Gembur*.
    - `is_house_area` (Boolean): Bernilai `true` pada area 3×3 pusat.
@@ -61,12 +61,12 @@ Ditempatkan di luar batas diamond $11 \times 11$ untuk menciptakan ilusi hutan b
 
 ## 5. Checklist File Aset Siap Pakai
 
-- [ ] `tileset_forest_64x32.png` (Atlas PNG $256 \times 128$ px)
-- [ ] `tile_selector_green.png` ($64 \times 32$ px)
-- [ ] `tile_selector_red.png` ($64 \times 32$ px)
-- [ ] `prop_pine_tree.png` ($64 \times 96$ px)
-- [ ] `prop_oak_tree.png` ($96 \times 96$ px)
-- [ ] `prop_bush_berries.png` ($32 \times 32$ px)
-- [ ] `prop_mossy_stone.png` ($48 \times 32$ px)
-- [ ] `prop_wood_stump.png` ($32 \times 32$ px)
+- [ ] `tileset_forest.png` (Atlas PNG $1280 \times 1280$ px)
+- [ ] `tile_selector_green.png` ($1280 \times 1280$ px)
+- [ ] `tile_selector_red.png` ($1280 \times 1280$ px)
+- [ ] `prop_pine_tree.png` ($1280 \times 1280$ px)
+- [ ] `prop_oak_tree.png` ($1280 \times 1280$ px)
+- [ ] `prop_bush_berries.png` ($1280 \times 1280$ px)
+- [ ] `prop_mossy_stone.png` ($1280 \times 1280$ px)
+- [ ] `prop_wood_stump.png` ($1280 \times 1280$ px)
 - [ ] Resource `forest_tileset.tres` di Godot Engine terkonfigurasi isometrik.

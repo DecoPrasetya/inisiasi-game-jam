@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://drivhif726gts"]
+
+[ext_resource type="Script" uid="uid://bsei2dm7r5kwr" path="res://sandbox/prog_2/test_trd_006.gd" id="1_adduc"]
+[ext_resource type="PackedScene" uid="uid://imv8dqinfoyq" path="res://sandbox/prog_2/test_char.tscn" id="2_m8jfb"]
+[ext_resource type="PackedScene" uid="uid://d354tkeg8wxcq" path="res://src/system/grid_placement/planting_grid.tscn" id="2_x6fov"]
+[ext_resource type="Script" uid="uid://bc1m7td7l6a3p" path="res://src/resources/schemas/plant_stats.gd" id="3_lcguj"]
+[ext_resource type="PackedScene" uid="uid://xsbtwc6la4f7" path="res://src/system/wave_spawner/wave_spawner.tscn" id="3_m8jfb"]
+
+[sub_resource type="Resource" id="Resource_dxx40"]
+script = ExtResource("3_lcguj")
+scene = ExtResource("2_m8jfb")
+metadata/_custom_type_script = "uid://bc1m7td7l6a3p"
+
+[node name="TestTrd006" type="Node2D" unique_id=1800105603]
+script = ExtResource("1_adduc")
+test_plant_stats = SubResource("Resource_dxx40")
+
+[node name="PlantingGrid" parent="." unique_id=1818057291 instance=ExtResource("2_x6fov")]
+position = Vector2(419, 302)
+
+[node name="WaveSpawner" parent="." unique_id=1218627763 instance=ExtResource("3_m8jfb")]
+position = Vector2(185, 350)

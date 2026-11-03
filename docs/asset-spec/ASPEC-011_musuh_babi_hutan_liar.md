@@ -12,8 +12,8 @@
 - **Nama Karakter**: Babi Hutan Liar (Wild Boar)
 - **Tipe Serangan 🟢**: `MELEE` (Jarak Dekat - Tanky Charger)
 - **Deskripsi Visual**: Monster babi hutan bertubuh tambun dan berotot pejal dengan kulit tebal berlapis lumpur kering. Memiliki surai bulu hitam kasar berduri di sepanjang tulang punggungnya. Ciri paling mencolok adalah sepasang taring gading putih gading tajam melengkung ke atas dari rahang bawahnya.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 52 \times 40$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 56)$ piksel (Tapak tengah kaki).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 1040 \times 800$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1120)$ piksel (Tapak tengah kaki).
 
 ---
 
@@ -58,8 +58,8 @@
 
 ## 3. Checklist File Aset Siap Pakai
 
-- [ ] `babi_hutan_walk.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `babi_hutan_headbutt.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `babi_hutan_hurt.png` (Spritesheet $192 \times 64$ px, 3 frames)
-- [ ] `babi_hutan_die.png` (Spritesheet $256 \times 64$ px, 4 frames)
+- [ ] `babi_hutan_walk.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `babi_hutan_headbutt.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `babi_hutan_hurt.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `babi_hutan_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
 - [ ] Resource `babi_hutan_frames.tres` di Godot Engine dengan 4 klip animasi di atas.

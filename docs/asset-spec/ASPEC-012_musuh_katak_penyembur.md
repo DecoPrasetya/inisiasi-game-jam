@@ -12,8 +12,8 @@
 - **Nama Karakter**: Katak Penyembur (Spitter Toad)
 - **Tipe Serangan 🟢**: `RANGED` (Jarak Jauh - Jangkauan 120px)
 - **Deskripsi Visual**: Katak raksasa berlendir hijau lumut gelap dengan totol-totol ungu beracun di punggungnya. Memiliki kantung tenggorokan elastis berwarna kuning pucat yang dapat menggelembung besar saat mengumpulkan asam lambung beracun. Berhenti di jarak 120px dari target untuk meludahkan proyektil asam tiap 2.0 detik.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 44 \times 36$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 54)$ piksel (Alas perut dan kaki berselaput).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 880 \times 720$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1080)$ piksel (Alas perut dan kaki berselaput).
 
 ---
 
@@ -59,16 +59,16 @@
 ## 3. Sub-Aset Proyektil Asam
 
 - **Sprite Proyektil (`acid_blob.png`)**:
-  - Dimensi: $16 \times 16$ piksel.
+  - Dimensi: Kanvas $1280 \times 1280$ piksel.
   - Gumpalan lendir asam ungu beracun dengan ekor tetesan tipis di belakangnya saat melesat di udara.
 
 ---
 
 ## 4. Checklist File Aset Siap Pakai
 
-- [ ] `katak_penyembur_hop.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `katak_penyembur_spit.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `katak_penyembur_hurt.png` (Spritesheet $192 \times 64$ px, 3 frames)
-- [ ] `katak_penyembur_die.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `acid_blob.png` (Sprite tunggal proyektil $16 \times 16$ px)
+- [ ] `katak_penyembur_hop.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `katak_penyembur_spit.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `katak_penyembur_hurt.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `katak_penyembur_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `acid_blob.png` (Sprite tunggal proyektil $1280 \times 1280$ px)
 - [ ] Resource `katak_penyembur_frames.tres` di Godot Engine dengan 4 klip animasi di atas.

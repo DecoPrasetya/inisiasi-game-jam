@@ -12,8 +12,8 @@
 - **Nama Karakter**: Serigala Hutan (Forest Wolf)
 - **Tipe Serangan 🟢**: `MELEE` (Jarak Dekat)
 - **Deskripsi Visual**: Serigala liar bertubuh ramping dan atletis dengan bulu lebat berwarna abu-abu gelap keperakan. Sorot matanya merah menyala buas di kegelapan malam hutan. Mulutnya selalu terbuka menyeringai memamerkan taring runcing yang siap menggigit tanaman.
-- **Ukuran Kanvas Sprite**: $64 \times 64$ piksel (Area tubuh efektif $\approx 50 \times 36$ px).
-- **Titik Tumpu (Pivot/Origin)**: $(32, 54)$ piksel (Tapak kaki tengah).
+- **Ukuran Kanvas Sprite**: $1280 \times 1280$ piksel (Area tubuh efektif $\approx 1000 \times 720$ px).
+- **Titik Tumpu (Pivot/Origin)**: $(640, 1080)$ piksel (Tapak kaki tengah).
 
 ---
 
@@ -58,8 +58,8 @@
 
 ## 3. Checklist File Aset Siap Pakai
 
-- [ ] `serigala_hutan_run.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `serigala_hutan_bite.png` (Spritesheet $256 \times 64$ px, 4 frames)
-- [ ] `serigala_hutan_hurt.png` (Spritesheet $192 \times 64$ px, 3 frames)
-- [ ] `serigala_hutan_die.png` (Spritesheet $256 \times 64$ px, 4 frames)
+- [ ] `serigala_hutan_run.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `serigala_hutan_bite.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
+- [ ] `serigala_hutan_hurt.png` (Spritesheet $3840 \times 1280$ px, 3 frames @ 1280x1280)
+- [ ] `serigala_hutan_die.png` (Spritesheet $5120 \times 1280$ px, 4 frames @ 1280x1280)
 - [ ] Resource `serigala_hutan_frames.tres` di Godot Engine dengan 4 klip animasi di atas.
