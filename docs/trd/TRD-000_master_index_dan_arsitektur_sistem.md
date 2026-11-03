@@ -40,6 +40,7 @@ Sistem TRD ini diorganisasi dengan prinsip **1 File 1 Modul** agar setiap progra
 | **TRD-011** | [TRD-011_plant_anggrek_paramedis.md](/docs/trd/TRD-011_plant_anggrek_paramedis.md) | Modul spesifik **Anggrek Paramedis** (Role: Supporter, lempar medkit ke tanaman HP terendah). | Programmer 2 |
 | **TRD-012** | [TRD-012_data_validator_dan_rule_enforcement.md](/docs/trd/TRD-012_data_validator_dan_rule_enforcement.md) | Tool verifikasi otomatis integritas R1–R7 untuk file data `.tres` tanpa harus membuka game. | Programmer 2 |
 | **TRD-013** | [TRD-013_ui_hud_dan_shop_system.md](/docs/trd/TRD-013_ui_hud_dan_shop_system.md) | UI HUD (Hari, Saldo, HP Rumah, Space), Shop Panel (Role badges, Rarity), Modal info klik. | Programmer 3 |
+| **TRD-014** | [TRD-014_menu_system_main_menu_pause_dan_game_over.md](/docs/trd/TRD-014_menu_system_main_menu_pause_dan_game_over.md) | Sistem Menu (Main Menu, Pause, Game Over, Panduan 3 Role, Persistent High Score). | Programmer 3 & Designer 1 |
 
 ---
 
@@ -177,7 +178,8 @@ res://
 │   └── ui/
 │       ├── hud/
 │       ├── shop/
-│       └── popups/
+│       ├── popups/
+│       └── menus/
 └── sandbox/
     ├── prog_1/
     ├── prog_2/

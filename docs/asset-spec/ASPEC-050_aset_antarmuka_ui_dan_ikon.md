@@ -70,16 +70,34 @@ Dimensi kanvas kartu belanja: $1280 \times 1280$ piksel (Di-downscale responsive
 
 ---
 
-## 6. Checklist File Aset Siap Pakai
+## 6. Aset Menu Utama & Layar Lain (Main Menu, Pause, Game Over) 📘 [PRD: 8.3] & 📘 [TRD-014]
 
-- [ ] `icon_role_damage_dealer.png` ($1280 \times 1280$ px)
-- [ ] `icon_role_supporter.png` ($1280 \times 1280$ px)
-- [ ] `icon_role_defender.png` ($1280 \times 1280$ px)
-- [ ] `card_border_common.png`, `card_border_rare.png`, `card_border_epic.png`, `card_border_legendary.png` ($1280 \times 1280$ px)
-- [ ] `card_overlay_locked.png` ($1280 \times 1280$ px)
-- [ ] `hud_icon_resource.png`, `hud_icon_house.png`, `hud_icon_space.png` ($1280 \times 1280$ px)
-- [ ] `hud_icon_sun.png`, `hud_icon_moon.png` ($1280 \times 1280$ px)
-- [ ] `hud_hp_bar_fill.png`, `hud_hp_bar_frame.png` ($1280 \times 1280$ px)
-- [ ] `btn_start_night.png` ($1280 \times 1280$ px)
-- [ ] `warning_flank_arrow.png` ($1280 \times 1280$ px)
-- [ ] `panel_info_popup.png` ($1280 \times 1280$ px)
+| Komponen Layar | File Aset | Dimensi | Karakteristik Visual |
+| :--- | :--- | :---: | :--- |
+| **Logo Judul Game** | `title_logo_forest_defense.png` | $420 \times 130$ px | Tipografi kayu kokoh berlumut hijau dengan dedaunan menjuntai dan tulisan *"Forest Defense"*. |
+| **Latar Menu Utama** | `bg_main_menu.png` | $1280 \times 720$ px | Ilustrasi hutan fantasi rimbun dengan siluet rumah kayu di kejauhan dan partikel spora bercahaya. |
+| **Tombol Kayu Standar** | `btn_menu_wood_normal.png`<br>`btn_menu_wood_hover.png`<br>`btn_menu_wood_pressed.png` | $200 \times 48$ px (9-slice) | Papan kayu berpelitur kasar dengan baut kuningan di sudutnya. Efek hover menambahkan aura hijau herbal bersinar. |
+| **Panel Jeda (Pause)** | `panel_pause_wood.png` | $360 \times 400$ px | Papan kayu vertikal bertali rotan alami dengan bingkai gelap. |
+| **Panel Game Over** | `panel_game_over_cracked.png` | $440 \times 480$ px | Papan kayu retak patah bertekstur arang gelap, melambangkan kehancuran pertahanan rumah hutan. |
+| **Ikon Panduan 3 Role** | Terintegrasi | $32 \times 32$ px | Menggunakan `icon_role_damage_dealer.png`, `icon_role_supporter.png`, dan `icon_role_defender.png`. |
+
+---
+
+## 7. Checklist File Aset Siap Pakai
+
+- [ ] `icon_role_damage_dealer.png` ($32 \times 32$ px)
+- [ ] `icon_role_supporter.png` ($32 \times 32$ px)
+- [ ] `icon_role_defender.png` ($32 \times 32$ px)
+- [ ] `card_border_common.png`, `card_border_rare.png`, `card_border_epic.png`, `card_border_legendary.png` ($72 \times 96$ px)
+- [ ] `card_overlay_locked.png` ($72 \times 96$ px)
+- [ ] `hud_icon_resource.png`, `hud_icon_house.png`, `hud_icon_space.png` ($24 \times 24$ px)
+- [ ] `hud_icon_sun.png`, `hud_icon_moon.png` ($28 \times 28$ px)
+- [ ] `hud_hp_bar_fill.png`, `hud_hp_bar_frame.png`
+- [ ] `btn_start_night.png` ($130 \times 36$ px)
+- [ ] `warning_flank_arrow.png` ($32 \times 32$ px)
+- [ ] `panel_info_popup.png` ($280 \times 360$ px)
+- [ ] `title_logo_forest_defense.png` ($420 \times 130$ px)
+- [ ] `bg_main_menu.png` ($1280 \times 720$ px)
+- [ ] `btn_menu_wood_normal.png`, `btn_menu_wood_hover.png`, `btn_menu_wood_pressed.png` ($200 \times 48$ px 9-slice)
+- [ ] `panel_pause_wood.png` ($360 \times 400$ px)
+- [ ] `panel_game_over_cracked.png` ($440 \times 480$ px)
