@@ -193,11 +193,17 @@ func _find_blocking_plant(range_px: float) -> Node2D:
 	
 	for node in get_tree().get_nodes_in_group("plants"):
 		var pl: Node2D = node as Node2D
-		if pl != null and is_instance_valid(pl) and pl.visible:
-			var d_sq: float = global_position.distance_squared_to(pl.global_position)
-			if d_sq <= min_d_sq:
-				min_d_sq = d_sq
-				nearest_plant = pl
+		if pl == null or not is_instance_valid(pl) or not pl.visible:
+			continue
+		if ("_is_dying" in pl and pl._is_dying):
+			continue
+		if "health_component" in pl and pl.health_component != null and pl.health_component.is_dead:
+			continue
+			
+		var d_sq: float = global_position.distance_squared_to(pl.global_position)
+		if d_sq <= min_d_sq:
+			min_d_sq = d_sq
+			nearest_plant = pl
 	return nearest_plant
 	
 func set_taunt_target(defender_node: Node2D) -> void:

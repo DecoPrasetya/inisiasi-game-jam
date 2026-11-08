@@ -242,11 +242,26 @@ func _on_died() -> void:
 		return
 	_is_dying = true
 	
-	if anim_sprite != null and anim_sprite.sprite_frames != null and anim_sprite.sprite_frames.has_animation(&"death"):
-		anim_sprite.play(&"death")
-		await anim_sprite.animation_finished
+	if is_in_group("plants"):
+		remove_from_group("plants")
+		
+	if hurtbox_component != null:
+		hurtbox_component.set_deferred("monitoring", false)
+		hurtbox_component.set_deferred("monitorable", false)
+		hurtbox_component.collision_layer = 0
+	if detection_area != null:
+		detection_area.set_deferred("monitoring", false)
 		
 	plant_died.emit()
+	
+	if anim_sprite != null and anim_sprite.sprite_frames != null and anim_sprite.sprite_frames.has_animation(&"death"):
+		var sf: SpriteFrames = anim_sprite.sprite_frames
+		if sf.get_frame_count(&"death") > 0:
+			sf.set_animation_loop(&"death", false)
+			anim_sprite.play(&"death")
+			# Gunakan timer pengaman (maks 1.0 detik)เผื่อ animasi gagal selesai
+			await get_tree().create_timer(0.8).timeout
+			
 	queue_free()
 
 
