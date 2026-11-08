@@ -1,5 +1,41 @@
 [gd_scene format=3 uid="uid://dw162y1wb6vuv"]
 
-[node name="BasePlant" type="Node2D" unique_id=352844060]
+[ext_resource type="Script" uid="uid://bem5gb200wc5u" path="res://src/resources/data/plants/base_plant.gd" id="1_f5wk5"]
+[ext_resource type="Script" uid="uid://ge5qlv54bjon" path="res://src/components/health_component.gd" id="2_6nr3d"]
+[ext_resource type="Script" uid="uid://ddxl7crsjwa4m" path="res://src/components/status_effect_receiver.gd" id="3_ykddo"]
+[ext_resource type="Script" uid="uid://b8jn3ewgv12o6" path="res://src/components/hurtbox_component.gd" id="4_ykddo"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2016247866]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hvvs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+
+[node name="BasePlant" type="Node2D" unique_id=352844060]
+script = ExtResource("1_f5wk5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=389464345]
+sprite_frames = SubResource("SpriteFrames_1hvvs")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=396349775]
+script = ExtResource("2_6nr3d")
+metadata/_custom_type_script = "uid://ge5qlv54bjon"
+
+[node name="StatusEffectReceiver" type="Node" parent="." unique_id=481897120]
+script = ExtResource("3_ykddo")
+metadata/_custom_type_script = "uid://ddxl7crsjwa4m"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=628379760]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_ykddo")
+
+[node name="HurtCollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=306557669]
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=464703352]
+collision_layer = 0
+collision_mask = 8
+
+[node name="DetectionCollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=949001122]
+shape = SubResource("RectangleShape2D_13qdw")

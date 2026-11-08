@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlantStats" format=3 uid="uid://cghcqky4lsp0k"]
+
+[ext_resource type="Script" uid="uid://b6g1pmw2nodpx" path="res://src/resources/schemas/effect_data.gd" id="1_sxx0t"]
+[ext_resource type="PackedScene" uid="uid://j45dabvubw8w" path="res://src/resources/data/plants/tameng_sitrus.tscn" id="2_osr80"]
+[ext_resource type="Script" uid="uid://bc1m7td7l6a3p" path="res://src/resources/schemas/plant_stats.gd" id="2_x572a"]
+
+[resource]
+script = ExtResource("2_x572a")
+id = &"tameng_sitrus"
+display_name = "Tameng Sitrus"
+scene = ExtResource("2_osr80")
+role = 2
+cost = 30
+max_hp = 616.0
+attack_range = 80.0
+metadata/_custom_type_script = "uid://bc1m7td7l6a3p"

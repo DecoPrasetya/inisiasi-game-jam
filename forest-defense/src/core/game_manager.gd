@@ -13,6 +13,7 @@ var active_enemy_count: int = 0
 var days_survived: int = 0
 var max_house_hp: float = 500.0
 var current_house_hp: float = 500.0
+var current_house_level: int = 1
 
 func _ready() -> void:
 	EventBus.enemy_spawned.connect(_on_enemy_spawned)
@@ -102,7 +103,7 @@ func spend_resource(cost: int) -> bool:
 	EventBus.resource_changed.emit(current_resource, -cost)
 	return true
 
-func _on_house_upgraded(_new_level: int, new_plant_space: int, _max_plant_level: int) -> void:
+func _on_house_upgraded(_new_level: int, new_plant_space: int, _max_plant_level: int = 1) -> void:
 	current_house_space = new_plant_space
 
 func _connect_house_signals() -> void:
@@ -121,3 +122,13 @@ func damage_house(amount: float) -> void:
 	if current_house_hp <= 0.0:
 		if EventBus.has_signal("house_destroyed"):
 			EventBus.emit_signal("house_destroyed")
+			
+func get_current_house_level() -> int:
+	return current_house_level
+
+
+func upgrade_house_level() -> void:
+	current_house_level += 1
+	current_house_space += 2
+	if EventBus.has_signal("house_upgraded"):
+		EventBus.emit_signal("house_upgraded", current_house_level, current_house_space)

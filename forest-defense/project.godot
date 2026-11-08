@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="forest-defense"
-run/main_scene="uid://bigkhsps7qwbp"
+run/main_scene="uid://bs78rswwrmib1"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]

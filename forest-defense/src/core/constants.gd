@@ -67,3 +67,7 @@ const LAYER_PLANTS: int = 2
 const LAYER_ENEMIES: int = 3
 const LAYER_PROJECTILES: int = 4
 const LAYER_COLLECTIBLES: int = 5
+
+# PPERTUMBUHAN TANAMAN
+const PLANT_STAT_GROWTH_PER_LEVEL: float = 0.20 # +20% per level di atas level 1
+const PLANT_UPGRADE_COST_MULT: float = 1.5

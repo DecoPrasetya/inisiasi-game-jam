@@ -1,6 +1,91 @@
 [gd_scene format=3 uid="uid://djr3vrbpaqa2f"]
 
-[ext_resource type="Script" uid="uid://d2ul3s0axlrwn" path="res://src/resources/data/plants/pembazoka_kuning.gd" id="1_gs3yw"]
+[ext_resource type="PackedScene" uid="uid://dw162y1wb6vuv" path="res://src/resources/data/plants/base_plant.tscn" id="1_gs3yw"]
+[ext_resource type="Texture2D" uid="uid://dyqvrqvyc172t" path="res://assets/entities/plants/tameng_sitrus/idle.png" id="3_bta0g"]
+[ext_resource type="Texture2D" uid="uid://u8loyi6ylupp" path="res://assets/entities/enemies/katak_penyembur/katak_penyembur_die.png" id="4_joepf"]
 
-[node name="PembazokaKuning" type="Node2D" unique_id=1142097154]
-script = ExtResource("1_gs3yw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qto4s"]
+atlas = ExtResource("4_joepf")
+region = Rect2(0, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a2vc"]
+atlas = ExtResource("4_joepf")
+region = Rect2(1280, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2f8o"]
+atlas = ExtResource("4_joepf")
+region = Rect2(2560, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkmx7"]
+atlas = ExtResource("4_joepf")
+region = Rect2(3840, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joepf"]
+atlas = ExtResource("3_bta0g")
+region = Rect2(0, 0, 641, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmf8r"]
+atlas = ExtResource("3_bta0g")
+region = Rect2(641, 0, 641, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxyq"]
+atlas = ExtResource("3_bta0g")
+region = Rect2(1282, 0, 641, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssw6s"]
+atlas = ExtResource("3_bta0g")
+region = Rect2(1923, 0, 641, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gs3yw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qto4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a2vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2f8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkmx7")
+}],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joepf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmf8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssw6s")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="PembazokaKuning" unique_id=352844060 instance=ExtResource("1_gs3yw")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=389464345]
+modulate = Color(1, 1, 0, 1)
+sprite_frames = SubResource("SpriteFrames_gs3yw")
+animation = &"idle"

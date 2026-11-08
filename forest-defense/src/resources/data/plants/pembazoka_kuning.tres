@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlantStats" format=3 uid="uid://bmydlaqlcmxga"]
+
+[ext_resource type="Script" uid="uid://b6g1pmw2nodpx" path="res://src/resources/schemas/effect_data.gd" id="1_e8xip"]
+[ext_resource type="Script" uid="uid://bc1m7td7l6a3p" path="res://src/resources/schemas/plant_stats.gd" id="2_6w1lw"]
+[ext_resource type="PackedScene" uid="uid://djr3vrbpaqa2f" path="res://src/resources/data/plants/pembazoka_kuning.tscn" id="2_qj1iy"]
+
+[resource]
+script = ExtResource("2_6w1lw")
+id = &"pembazoka_kuning"
+display_name = "Pembazoka Kuning"
+scene = ExtResource("2_qj1iy")
+rarity = 2
+cost = 40
+attack_speed = 2.0
+attack_range = 60.0
+metadata/_custom_type_script = "uid://bc1m7td7l6a3p"

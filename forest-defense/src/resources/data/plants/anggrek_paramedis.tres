@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlantStats" format=3 uid="uid://cnq7q8omhr1v1"]
+
+[ext_resource type="Script" uid="uid://b6g1pmw2nodpx" path="res://src/resources/schemas/effect_data.gd" id="1_64lpg"]
+[ext_resource type="PackedScene" uid="uid://bgm3k6nfgl6ld" path="res://src/resources/data/plants/anggrek_paramedis.tscn" id="2_h6jyk"]
+[ext_resource type="Script" uid="uid://bc1m7td7l6a3p" path="res://src/resources/schemas/plant_stats.gd" id="2_x0mtm"]
+
+[resource]
+script = ExtResource("2_x0mtm")
+id = &"anggrek_paramedis"
+display_name = "Anggrek Paramedis"
+scene = ExtResource("2_h6jyk")
+role = 1
+rarity = 1
+cost = 5
+metadata/_custom_type_script = "uid://bc1m7td7l6a3p"

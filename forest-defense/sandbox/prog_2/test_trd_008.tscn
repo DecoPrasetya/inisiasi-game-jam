@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bs78rswwrmib1"]
+
+[ext_resource type="Script" uid="uid://bej3etokvnfbc" path="res://sandbox/prog_2/test_trd_008.gd" id="1_w52g6"]
+[ext_resource type="PackedScene" uid="uid://d354tkeg8wxcq" path="res://src/system/grid_placement/planting_grid.tscn" id="2_ree84"]
+[ext_resource type="PackedScene" uid="uid://xsbtwc6la4f7" path="res://src/system/wave_spawner/wave_spawner.tscn" id="3_4y4ey"]
+[ext_resource type="Script" uid="uid://bc1m7td7l6a3p" path="res://src/resources/schemas/plant_stats.gd" id="3_ulbko"]
+[ext_resource type="Resource" uid="uid://bmydlaqlcmxga" path="res://src/resources/data/plants/pembazoka_kuning.tres" id="4_mxv88"]
+[ext_resource type="Resource" uid="uid://cghcqky4lsp0k" path="res://src/resources/data/plants/tameng_sitrus.tres" id="5_eytdb"]
+[ext_resource type="Resource" uid="uid://cnq7q8omhr1v1" path="res://src/resources/data/plants/anggrek_paramedis.tres" id="6_se081"]
+[ext_resource type="Script" uid="uid://b42pqi03hg6oa" path="res://src/resources/schemas/enemy_stats.gd" id="7_se081"]
+[ext_resource type="Resource" uid="uid://dhlo7jdoyfhi5" path="res://src/resources/data/enemies/katak_penyembur.tres" id="9_eytdb"]
+
+[node name="TestTrd008" type="Node2D" unique_id=1800105603]
+script = ExtResource("1_w52g6")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1444354464]
+position = Vector2(640, 365)
+zoom = Vector2(1.5, 1.5)
+
+[node name="PlantingGrid" parent="." unique_id=1818057291 instance=ExtResource("2_ree84")]
+position = Vector2(419, 302)
+plant_catalog = Array[ExtResource("3_ulbko")]([ExtResource("4_mxv88"), ExtResource("5_eytdb"), ExtResource("6_se081")])
+
+[node name="WaveSpawner" parent="." unique_id=1218627763 instance=ExtResource("3_4y4ey")]
+position = Vector2(185, 350)
+enemy_catalog = Array[ExtResource("7_se081")]([ExtResource("9_eytdb")])
