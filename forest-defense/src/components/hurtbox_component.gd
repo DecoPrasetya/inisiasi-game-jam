@@ -34,10 +34,18 @@ func receive_hit(hitbox: HitboxComponent) -> void:
 		
 	# damage ke HealthComponent (Hanya jika damage > 0)
 	if health_component != null and hitbox.damage > 0.0:
+		#var hp_comp = health_component as HealthComponent
+		#if hp_comp != null and hp_comp.has_method("take_damage"):
+			#hp_comp.take_damage(hitbox.damage, hitbox.source_role, hitbox.owner_entity)
 		health_component.take_damage(hitbox.damage, hitbox.source_role, hitbox.owner_entity)
 		
 	# efek status / CC ke StatusEffectReceiver
 	if status_receiver != null and not hitbox.applied_effects.is_empty():
+		#var status_rec = status_receiver as StatusEffectReceiver
+		#if status_rec != null and status_rec.has_method("apply_effect"):
+			#for effect in hitbox.applied_effects:
+				#if effect != null:
+					#status_rec.apply_effect(effect, hitbox.source_role)
 		for effect in hitbox.applied_effects:
 			if effect != null:
 				status_receiver.apply_effect(effect, hitbox.source_role)

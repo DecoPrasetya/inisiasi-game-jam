@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b18jrn0xll54u"]
+
+[ext_resource type="PackedScene" uid="uid://dfdyl3jdjad56" path="res://src/resources/data/enemies/base_enemy.tscn" id="1_8bdv8"]
+[ext_resource type="Texture2D" uid="uid://u8loyi6ylupp" path="res://assets/entities/enemies/katak_penyembur/katak_penyembur_die.png" id="2_sth2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb68e"]
+atlas = ExtResource("2_sth2m")
+region = Rect2(0, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s30fc"]
+atlas = ExtResource("2_sth2m")
+region = Rect2(1280, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxc7c"]
+atlas = ExtResource("2_sth2m")
+region = Rect2(2560, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyc65"]
+atlas = ExtResource("2_sth2m")
+region = Rect2(3840, 0, 1280, 1280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bdv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb68e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s30fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxc7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyc65")
+}],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="KatakPenyembur" unique_id=914840915 instance=ExtResource("1_8bdv8")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1013503586]
+sprite_frames = SubResource("SpriteFrames_8bdv8")
+animation = &"death"
+frame_progress = 0.9923303

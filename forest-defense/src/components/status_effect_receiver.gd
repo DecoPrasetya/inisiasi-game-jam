@@ -85,14 +85,13 @@ func apply_effect(effect: EffectData, source_role: int) -> bool:
 func calculate_final_stat(base_value: float, stat_name: StringName = &"") -> float:
 	var sum_flat: float = 0.0
 	var sum_percent: float = 0.0
-	
+
 	for entry in active_effects:
 		var eff: EffectData = entry["data"]
-		if eff.effect_kind == Constants.EffectKind.BUFF or eff.effect_kind == Constants.EffectKind.DEBUFF:
-			if stat_name == &"" or eff.target_stat == stat_name:
-				sum_flat += eff.flat_modifier
-				sum_percent += eff.percent_modifier
-				
+		if stat_name == &"" or eff.target_stat == stat_name:
+			sum_flat += eff.flat_modifier
+			sum_percent += eff.percent_modifier
+
 	return (base_value + sum_flat) * (1.0 + sum_percent)
 
 

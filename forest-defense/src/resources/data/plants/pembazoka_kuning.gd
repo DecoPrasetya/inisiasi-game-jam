@@ -2,53 +2,15 @@ class_name PembazokaKuning
 extends BasePlant
 
 var _attack_cooldown_timer: float = 0.0
-var _detection_area: Area2D = null
-var _collision_shape: CollisionShape2D = null
 
 
-func _ready() -> void:
-	add_to_group("plants")
-	super._ready()
-	set_physics_process(true)
-	_setup_detection_area()
-
-
-func setup_from_stats(plant_data: PlantStats, cell: Vector2i = Vector2i.ZERO) -> void:
-	add_to_group("plants")
-	super.setup_from_stats(plant_data, cell)
+func _on_plant_configured() -> void:
 	if stats != null:
 		stats.role = Constants.PlantRole.DAMAGE_DEALER
-	set_physics_process(true)
-	_setup_detection_area()
-	queue_redraw()
+	_setup_detection_area(Constants.LAYER_ENEMIES)
 
 
-func _setup_detection_area() -> void:
-	var detect_radius: float = get_final_stat(&"attack_range", 240.0)
-	if _detection_area == null:
-		_detection_area = Area2D.new()
-		_detection_area.name = "DetectionArea"
-		_detection_area.collision_layer = 0
-		_detection_area.collision_mask = 0
-		if Constants.LAYER_ENEMIES >= 1 and Constants.LAYER_ENEMIES <= 32:
-			_detection_area.set_collision_mask_value(Constants.LAYER_ENEMIES, true)
-		_detection_area.monitoring = true
-		_detection_area.monitorable = false
-		
-		_collision_shape = CollisionShape2D.new()
-		var circle := CircleShape2D.new()
-		circle.radius = detect_radius
-		_collision_shape.shape = circle
-		_detection_area.add_child(_collision_shape)
-		add_child(_detection_area)
-	elif _collision_shape != null and _collision_shape.shape is CircleShape2D:
-		(_collision_shape.shape as CircleShape2D).radius = detect_radius
-
-
-func _physics_process(delta: float) -> void:
-	if GameManager.current_phase != Constants.GamePhase.NIGHT:
-		return
-		
+func _process_night_behavior(delta: float) -> void:
 	_attack_cooldown_timer -= delta
 	if _attack_cooldown_timer > 0.0:
 		return
@@ -66,9 +28,8 @@ func _find_nearest_enemy_in_range() -> Node2D:
 	var nearest_enemy: Node2D = null
 	var min_dist_sq: float = max_range_sq
 	
-	# Cari dari grup "enemies" maupun anak dari WaveSpawner/EnemyContainer
 	var candidates: Array[Node] = get_tree().get_nodes_in_group("enemies")
-	if candidates.is_empty():
+	if candidates.is_empty() and get_tree().current_scene != null:
 		var spawner: Node = get_tree().current_scene.find_child("EnemyContainer", true, false)
 		if spawner != null:
 			candidates = spawner.get_children()
@@ -95,12 +56,12 @@ func _is_valid_enemy_target(en: Node2D) -> bool:
 func _fire_projectile_at(target: Node2D) -> void:
 	var final_damage: float = maxf(
 		Constants.MIN_DAMAGE_DEALER_DPS,
-		get_final_stat(&"attack_damage", 0.0)
+		get_final_stat(&"attack_damage", 10.0)
 	)
 	
-	if sprite != null:
-		sprite.flip_h = (target.global_position.x < global_position.x)
-		
+	set_facing_direction(target.global_position)
+	play_animation(&"attack")
+	
 	var projectile := _create_projectile_hitbox(final_damage, target)
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position + Vector2(0, -14)
@@ -130,7 +91,6 @@ func _create_projectile_hitbox(dmg: float, target: Node2D) -> HitboxComponent:
 	])
 	proj.add_child(visual)
 	
-	# meta flag agar peluru hanya memberi damage tepat 1 kali
 	proj.set_meta("has_hit", false)
 	
 	proj.hit_landed.connect(func(_hurtbox: Area2D):
@@ -143,7 +103,6 @@ func _create_projectile_hitbox(dmg: float, target: Node2D) -> HitboxComponent:
 	var dist: float = start_pos.distance_to(target.global_position)
 	var travel_time: float = clampf(dist / 360.0, 0.08, 0.6)
 	
-	# Tween mengejar posisi musuh secara real-time agar tidak pernah meleset
 	var tween: Tween = proj.create_tween()
 	tween.tween_method(func(weight: float):
 		if not is_instance_valid(proj) or proj.get_meta("has_hit"):
@@ -170,3 +129,4 @@ func _create_projectile_hitbox(dmg: float, target: Node2D) -> HitboxComponent:
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, 10.0, Color(1.0, 0.85, 0.1, 0.45))
 	draw_arc(Vector2.ZERO, get_final_stat(&"attack_range", 240.0), 0.0, TAU, 48, Color(1.0, 0.9, 0.2, 0.22), 1.0)
+	super._draw()

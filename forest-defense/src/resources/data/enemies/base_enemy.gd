@@ -7,11 +7,11 @@ var spawn_side: Constants.SpawnSide = Constants.SpawnSide.NORTH_EAST
 var hp_multiplier: float = 1.0
 var target_position: Vector2 = Vector2.ZERO
 var current_target_node: Node2D = null
+var taunt_target_node: Node2D = null
 var _attack_timer: float = 0.0
 var _is_dead: bool = false
-var _anim_timer: float = 0.0
 
-@onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
+@onready var anim_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 @onready var health_component: HealthComponent = get_node_or_null("HealthComponent")
 @onready var status_receiver: StatusEffectReceiver = get_node_or_null("StatusEffectReceiver")
 @onready var hurtbox_component: HurtboxComponent = get_node_or_null("HurtboxComponent")
@@ -27,15 +27,17 @@ func _ready() -> void:
 
 
 func _ensure_combat_components() -> void:
-	if sprite == null:
-		sprite = Sprite2D.new()
-		sprite.name = "Sprite2D"
-		add_child(sprite)
+	anim_sprite = get_node_or_null("AnimatedSprite2D")
+	if anim_sprite == null:
+		anim_sprite = AnimatedSprite2D.new()
+		anim_sprite.name = "AnimatedSprite2D"
+		add_child(anim_sprite)
 		
 	if health_component == null:
 		health_component = HealthComponent.new()
 		health_component.name = "HealthComponent"
 		add_child(health_component)
+		
 	health_component.is_enemy_entity = true
 	if not health_component.died.is_connected(_on_died):
 		health_component.died.connect(_on_died)
@@ -50,6 +52,8 @@ func _ensure_combat_components() -> void:
 	status_receiver.can_receive_crowd_control = true
 	if not status_receiver.stats_recalculated.is_connected(queue_redraw):
 		status_receiver.stats_recalculated.connect(queue_redraw)
+	if not status_receiver.effect_applied.is_connected(_on_status_effect_applied):
+		status_receiver.effect_applied.connect(_on_status_effect_applied)
 		
 	if hurtbox_component == null:
 		hurtbox_component = HurtboxComponent.new()
@@ -95,20 +99,9 @@ func setup_enemy(
 	_ensure_combat_components()
 	status_receiver.clear_all_effects()
 	
-	if stats != null and stats.texture != null:
-		sprite.texture = stats.texture
-	elif ResourceLoader.exists("res://assets/entities/enemies/katak_penyembur/katak_penyembur_hop.png"):
-		sprite.texture = load("res://assets/entities/enemies/katak_penyembur/katak_penyembur_hop.png")
-		
-	if sprite.texture != null:
-		var tex_w: int = sprite.texture.get_width()
-		var tex_h: int = sprite.texture.get_height()
-		if tex_h > 0 and tex_w >= tex_h * 2:
-			sprite.hframes = maxi(1, int(round(float(tex_w) / float(tex_h))))
-			sprite.vframes = 1
-			sprite.frame = 0
-		sprite.scale = Vector2(0.05, 0.05)
-		sprite.offset = Vector2(0, -24)
+	if anim_sprite != null:
+		anim_sprite.scale = Vector2(0.05, 0.05)
+		play_animation(&"idle")
 		
 	var scaled_hp: float = (stats.base_max_hp if stats != null else 50.0) * hp_multiplier
 	health_component.initialize(scaled_hp, true)
@@ -116,7 +109,16 @@ func setup_enemy(
 	
 	visible = true
 	queue_redraw()
-
+	
+func play_animation(anim_name: StringName) -> void:
+	if anim_sprite == null or anim_sprite.sprite_frames == null:
+		return
+	if anim_sprite.sprite_frames.has_animation(anim_name) and anim_sprite.sprite_frames.get_frame_count(anim_name) > 0:
+		anim_sprite.play(anim_name)
+	elif anim_sprite.sprite_frames.has_animation(&"death") and anim_sprite.sprite_frames.get_frame_count(&"death") > 0:
+		# Fallback sementara karena di katak_penyembur.tscn saat ini baru animasi 'death' yang ada dlu
+		anim_sprite.play(&"death")
+		
 
 func _physics_process(delta: float) -> void:
 	if _is_dead or GameManager.current_phase != Constants.GamePhase.NIGHT:
@@ -132,11 +134,31 @@ func _physics_process(delta: float) -> void:
 	var final_spd: float = maxf(0.0, status_receiver.calculate_final_stat(base_spd, &"move_speed"))
 	var atk_range: float = stats.attack_range if stats != null else 36.0
 	
-	# Cek apakah ada tanaman di dekat musuh yang menghalangi jalan
-	current_target_node = _find_blocking_plant(atk_range)
+	# Validasi apakah target Taunt (Defender) masih hidup dan aktif menarik aggro
+	if taunt_target_node != null:
+		if not is_instance_valid(taunt_target_node) \
+			or not taunt_target_node.visible \
+			or ("_is_dying" in taunt_target_node and taunt_target_node._is_dying):
+			taunt_target_node = null
+			
+	# Jika terkena Aggro/Taunt dan belum sampai di jarak pukul Defender, belok ke arah Defender!
+	if taunt_target_node != null:
+		var dist_to_defender: float = global_position.distance_to(taunt_target_node.global_position)
+		if dist_to_defender <= atk_range:
+			current_target_node = taunt_target_node
+		else:
+			# Berjalan menghampiri Defender terlebih dahulu
+			var dir_to_def: Vector2 = (taunt_target_node.global_position - global_position).normalized()
+			global_position += dir_to_def * final_spd * delta
+			if anim_sprite != null and abs(dir_to_def.x) > 0.05:
+				anim_sprite.flip_h = dir_to_def.x < 0.0
+			return
+	else:
+		# Jika tidak ada Taunt, cek tanaman biasa yang menghalangi jalan
+		current_target_node = _find_blocking_plant(atk_range)
 	
+	# menyerang tanaman target jika sudah berada dalam jarak pukul
 	if current_target_node != null:
-		# Berhenti dan serang tanaman tersebut!
 		_attack_timer -= delta
 		if _attack_timer <= 0.0:
 			var base_cd: float = stats.attack_cooldown if stats != null else 1.2
@@ -144,22 +166,15 @@ func _physics_process(delta: float) -> void:
 			_perform_attack()
 		return
 		
-	# Jika tidak ada tanaman di dekatnya, lanjut berjalan menuju Rumah (0,0)
+	# Jika tidak ada tanaman yang menghalangi/menarik aggro, lanjut berjalan menuju Rumah (0,0)
 	var dist_to_center: float = global_position.distance_to(target_position)
 	if dist_to_center > atk_range:
 		var dir: Vector2 = (target_position - global_position).normalized()
 		global_position += dir * final_spd * delta
 		
-		if sprite != null and abs(dir.x) > 0.05:
-			sprite.flip_h = dir.x < 0.0
-			
-		if sprite != null and sprite.hframes > 1:
-			_anim_timer += delta
-			if _anim_timer >= 0.12:
-				_anim_timer = 0.0
-				sprite.frame = (sprite.frame + 1) % sprite.hframes
+		if anim_sprite != null and abs(dir.x) > 0.05:
+			anim_sprite.flip_h = dir.x < 0.0
 	else:
-		# sampai di pusat Rumah untuk Serang Rumah 
 		_attack_timer -= delta
 		if _attack_timer <= 0.0:
 			var base_cd: float = stats.attack_cooldown if stats != null else 1.2
@@ -169,8 +184,6 @@ func _physics_process(delta: float) -> void:
 			
 			if GameManager.has_method("damage_house"):
 				GameManager.damage_house(final_dmg)
-			elif GameManager.has_method("take_house_damage"):
-				GameManager.take_house_damage(final_dmg)
 
 
 func _find_blocking_plant(range_px: float) -> Node2D:
@@ -180,19 +193,38 @@ func _find_blocking_plant(range_px: float) -> Node2D:
 	
 	for node in get_tree().get_nodes_in_group("plants"):
 		var pl: Node2D = node as Node2D
-		if pl != null and is_instance_valid(pl) and pl.visible:
-			var d_sq: float = global_position.distance_squared_to(pl.global_position)
-			if d_sq <= min_d_sq:
-				min_d_sq = d_sq
-				nearest_plant = pl
+		if pl == null or not is_instance_valid(pl) or not pl.visible:
+			continue
+		if ("_is_dying" in pl and pl._is_dying):
+			continue
+		if "health_component" in pl and pl.health_component != null and pl.health_component.is_dead:
+			continue
+			
+		var d_sq: float = global_position.distance_squared_to(pl.global_position)
+		if d_sq <= min_d_sq:
+			min_d_sq = d_sq
+			nearest_plant = pl
 	return nearest_plant
+	
+func set_taunt_target(defender_node: Node2D) -> void:
+	if defender_node != null and is_instance_valid(defender_node):
+		taunt_target_node = defender_node
+		
+func _on_status_effect_applied(effect: EffectData) -> void:
+	if effect.effect_kind == Constants.EffectKind.CROWD_CONTROL and effect.cc_type == Constants.CrowdControlType.KNOCKBACK:
+		# Dorong musuh menjauh dari pusat rumah / tanaman
+		var push_dir: Vector2 = (global_position - target_position).normalized()
+		if push_dir == Vector2.ZERO:
+			push_dir = Vector2.UP
+		global_position += push_dir * 35.0
+	queue_redraw()
 
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, 12.0, Color(0.9, 0.15, 0.15, 0.45))
 	draw_arc(Vector2.ZERO, 12.0, 0.0, TAU, 24, Color(1.0, 0.3, 0.3, 0.9), 1.5)
 	
-	if sprite == null or sprite.texture == null:
+	if anim_sprite == null or anim_sprite.sprite_frames == null:
 		draw_circle(Vector2(0, -10), 10.0, Color(0.85, 0.2, 0.2, 1.0))
 		
 	if health_component != null:

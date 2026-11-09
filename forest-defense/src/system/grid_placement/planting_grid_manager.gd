@@ -232,11 +232,17 @@ func _instantiate_plant(data: PlantStats, cell: Vector2i) -> void:
 	var plant_instance: Node2D
 	if data.scene != null:
 		plant_instance = data.scene.instantiate() as Node2D
-		# Hanya pasang PembazokaKuning jika scene masih memakai BasePlant murni dan role-nya DAMAGE_DEALER
-		if plant_instance.get_script() == BasePlant and data.role == Constants.PlantRole.DAMAGE_DEALER:
-			plant_instance.set_script(PembazokaKuning)
-	else:
-		plant_instance = PembazokaKuning.new()
+		# Jika memakai BasePlant murni otomatis ganti ke skrip sesuai role/id
+		if plant_instance.get_script() == BasePlant:
+			match data.role:
+				Constants.PlantRole.DAMAGE_DEALER:
+					plant_instance.set_script(PembazokaKuning)
+				Constants.PlantRole.DEFENDER:
+					plant_instance.set_script(TamengSitrus)
+				Constants.PlantRole.SUPPORTER:
+					plant_instance.set_script(AnggrekParamedis)
+		else:
+			print("BasePlant tidak terpakai")
 		
 	# Masukkan ke tree SETELAH script PembazokaKuning terpasang
 	plant_container.add_child(plant_instance)

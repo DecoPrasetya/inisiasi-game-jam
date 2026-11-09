@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dhlo7jdoyfhi5"]
+
+[ext_resource type="Script" uid="uid://b42pqi03hg6oa" path="res://src/resources/schemas/enemy_stats.gd" id="1_iw3pb"]
+[ext_resource type="PackedScene" uid="uid://b18jrn0xll54u" path="res://src/resources/data/enemies/katak_penyembur.tscn" id="1_nvwid"]
+
+[resource]
+script = ExtResource("1_iw3pb")
+scene = ExtResource("1_nvwid")
+move_speed = 68.0
+metadata/_custom_type_script = "uid://b42pqi03hg6oa"
